@@ -32,10 +32,20 @@ class TaskManager:
         return None
 
     # -- core operations -----------------------------------------
-    def add_task(self, title, description=""):
-        """Add a task. Empty titles are rejected (see feature/addtask)."""
+    @staticmethod
+    def validate_title(title):
+        """Return a cleaned title, or raise ValueError if it is empty.
+
+        Titles made only of spaces count as empty, so a task can
+        never be created with a blank title.
+        """
         if title is None or not str(title).strip():
             raise ValueError("Task title cannot be empty.")
+        return str(title).strip()
+
+    def add_task(self, title, description=""):
+        """Add a task. Empty titles are rejected (see feature/addtask)."""
+        title = self.validate_title(title)
         task = {
             "id": self._next_id,
             "title": str(title).strip(),

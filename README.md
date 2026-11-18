@@ -3,7 +3,7 @@
 A small Python console application to add, display, complete, and delete
 student tasks. Built for CSC418 — DevOps for Cloud Computing, Lab Assignment 4.
 
-Project status: Planning
+Project status: In Progress
 
 ## Features
 

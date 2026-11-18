@@ -87,7 +87,12 @@ class TaskManager:
         return task
 
     def delete_task(self, task_id):
-        """Delete the task with this id and return it."""
+        """Delete the task with this id and return it.
+
+        Only the task with the matching id is removed; every
+        other task keeps its id and order. An unknown id raises
+        ValueError and deletes nothing.
+        """
         task = self._find(task_id)
         if task is None:
             raise ValueError(f"No task with id {task_id}.")

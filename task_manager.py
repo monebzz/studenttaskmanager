@@ -74,7 +74,12 @@ class TaskManager:
         return "\n".join(lines)
 
     def complete_task(self, task_id):
-        """Mark the task with this id as completed."""
+        """Mark the task with this id as completed.
+
+        An unknown id raises ValueError, and completing a task
+        that is already completed leaves it completed (no error,
+        no duplicate change).
+        """
         task = self._find(task_id)
         if task is None:
             raise ValueError(f"No task with id {task_id}.")

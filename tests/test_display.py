@@ -17,9 +17,8 @@ class TestDisplay(unittest.TestCase):
         """A completed task is shown with the [x] marker."""
         task = self.manager.add_task("CSC418 Assignment 4")
         self.manager.complete_task(task["id"])
-        # NOTE (first version): this expected "[done]" — wrong marker,
-        # so this test failed until it was corrected to "[x]".
-        self.assertIn("[done]", self.manager.display_tasks())
+        # The app marks completed tasks with "[x]".
+        self.assertIn("[x]", self.manager.display_tasks())
 
 
 if __name__ == "__main__":
